@@ -1,28 +1,59 @@
 import { useState } from "react";
-
+import Cards from "./component/cards";
+import humidity from "../src/assets/humidity.png";
+import wind from "../src/assets/wind.png";
 function App() {
   const [value, setValue] = useState("");
-  const [detail, setDetail] = useState("");
-  const [isOn, setIson] = useState(false);
+  const [temp, setTemp] = useState("");
+  const [loc, setLoc] = useState("");
+  const [humd, setHumd] = useState("");
+  const [wind, setWind] = useState("");
+  const [isOn, setIson] = useState("");
 
   const apiKey = "c87452cfea264e3c9f4161806261703";
   const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}`;
 
   const getData = async () => {
-    let code = response.current.condition.code;
     const response = await fetch(url);
     const result = await response.json();
+    let code = result.current.condition.code;
     console.log(result);
-    setDetail(`${result.current.temp_c} °C`);
+    setTemp(`${result.current.temp_c} °C`);
+    setLoc(`${result.location.name}`);
+    setHumd(`${result.current.humidity}`);
+    setWind(`${result.current.wind_kph}`);
+    console.log(humd);
+
+    imgHandler(code);
+  };
+
+  const imgHandler = (code) => {
+    if (code == 1000) {
+      setIson("clear");
+    } else if (code == 1006 || code == 1009) {
+      setIson("clouded");
+    } else if (code == 1003) {
+      setIson("partlyCloud");
+    } else if (code == 1030) {
+      setIson("mist");
+    } else if (code == 1063 || code == 1183) {
+      setIson("drizzle");
+    } else if (code == 1189) {
+      setIson("rain");
+    } else if (code == 1210 || code == 1225) {
+      setIson("snow");
+    } else {
+      setIson("wind");
+    }
   };
   return (
     <>
-      <div className="main h-[100vh] w-[100vw] flex justify-center items-center bg-zinc-800">
+      <div className="main h-[100vh] w-[100vw] flex  justify-center items-center bg-zinc-800">
         <div
-          className="contentBox h-[76vh] w-[50vw] bg-emerald-500 rounded-2xl
+          className="contentBox  h-[76vh] w-[35vw] bg-emerald-500 rounded-2xl 
           p-10"
         >
-          <div className="searchBar flex items-center">
+          <div className="searchBar flex items-center ">
             <input
               onChange={(e) => setValue(e.target.value)}
               type="text"
@@ -38,39 +69,24 @@ function App() {
               Search
             </button>
           </div>
-          <div className="weathDetail flex items-center">
-            <h1 className="text-6xl p-10 text-amber-50">{detail}</h1>
-            <div className="images ">
-              <img
-                src="./src/assets/clear.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2
-                  "
-              />
-              <img
-                src="./src/assets/cloud.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2"
-              />
-              <img
-                src="./src/assets/drizzle.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2"
-              />
-              <img
-                src="./src/assets/humidity.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2"
-              />
-              <img
-                src="./src/assets/snow.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2"
-              />
-              <img
-                src="./src/assets/wind.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2"
-              />
-              <img
-                src="./src/assets/rain.png"
-                className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2"
-              />
+          <div className="weathDetail flex items-center gap-12  p-7 ">
+            <div className="weatHead flex flex-col gap-5  p-5">
+              <h1 className="text-6xl  text-amber-50">{temp}</h1>
+              <h2 className="text-4xl  text-amber-50">{loc}</h2>
             </div>
+            <div className="images ">
+              {isOn && (
+                <img
+                  src={`./src/assets/${isOn}.png`}
+                  className="h-[30vh] w-[17vw] absolute top-48 left-52 translate-x-4/2 
+                  "
+                />
+              )}
+            </div>
+          </div>
+          <div className="cardDiv flex gap-6">
+            <Cards humd={humd} humimg={humidity} img src={humidity} />
+            <Cards humd={humd} windimg={wind} />
           </div>
         </div>
       </div>
