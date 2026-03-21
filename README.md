@@ -1,16 +1,27 @@
-🌦️🌦️Weather App (React JS)
+🌦️ WeatherApp - React + Vite + Tailwind CSS
+A modern, responsive, and real-time Weather Forecasting Application built with React.js. This app fetches live weather data from a third-party API and displays it with a clean, user-friendly interface.
 
-A modern and responsive Weather App built using React JS that allows users to search for real-time weather information of any city around the world. The app provides clean UI, dynamic data, and a smooth user experience across all devices.
+🚀 Live Demo
+https://weather-app-76q2.vercel.app/
 
-🚀 Features
-🔍 Search weather by city name
-🌡️ Real-time temperature, humidity, and wind speed
-🌤️ Dynamic weather conditions (Clear, Clouds, Rain, etc.)
-📱 Fully responsive design (Mobile + Tablet + Desktop)
-🎨 Clean and modern UI
-⚡ Fast performance using React state management
+✨ Features
+Real-time Data: Fetches current temperature, humidity, and wind speed using WeatherAPI.
+
+Dynamic Weather Icons: Changes images based on the weather condition code (Clear, Cloudy, Rain, Snow, etc.).
+
+Responsive Design: Fully optimized for Mobile, Tablet, and Desktop using Tailwind CSS.
+
+Error Handling: Includes checks for empty inputs, invalid city names, and network failures using response.ok.
+
+Smart Search: Special handling for city-specific queries (e.g., Delhi, India logic).
+
 🛠️ Tech Stack
-React JS (Frontend)
-CSS / Tailwind CSS (Styling)
-Weather API (for real-time data)
-JavaScript (ES6+)
+Frontend: React.js (Hooks: useState)
+
+Build Tool: Vite (Fast Refresh & Optimized Bundling)
+
+Styling: Tailwind CSS v4 (Glassmorphism & Gradient UI)
+
+Icons: Remix Icons (@remixicon/react)
+
+API: WeatherAPI.com
