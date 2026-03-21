@@ -59,13 +59,13 @@ function App() {
       "
       >
         <div
-          className="contentBox  h-[70vh] w-[33vw]    backdrop:blur-md  rounded-2xl 
+          className="contentBox  h-[72vh] w-[52vw] flex flex-col   backdrop:blur-md  rounded-2xl 
           p-10  bg-gradient-to-tr from-zinc-650 via-emerald-750 to-teal-600
           ring-1 ring-cyan-200 shadow-md shadow-cyan-200
-          sm:h-[70vh] sm:w-[70vw]
-          md:h-[60vh] md:w-[75vw]
-          lg:h-[67vh] lg:w-[60vw]
-          xl:h-[67vh] xl:w-[40vw]
+          sm:h-[73vh] sm:w-[70vw] sm:flex sm:flex-col sm:gap-6
+          md:h-[63vh] md:w-[75vw]
+          lg:h-[73vh] lg:w-[60vw]
+          xl:h-[69vh] xl:w-[40vw]
 "
         >
           <div className="searchBar flex items-center ">
@@ -83,7 +83,7 @@ function App() {
               rounded-l-xl 
               sm:h-[8vh] sm:w-[48vw] sm:text-3xl sm:p-4
               md:h-[8vh] md:w-[52vw] md:p-3 md:text-4xl
-              lg:h-[10vh] lg:w-[52vw] lg:p-3 lg:text-5xl
+              lg:h-[10vh] lg:w-[44vw] lg:p-3 lg:text-3xl
               xl:h-[10vh] xl:w-[45vw] xl:p-3 xl:text-3xl"
             />
             <button
@@ -94,42 +94,44 @@ function App() {
               
               sm:h-[8vh] sm:w-[10vw]
               md:h-[8vh] md:w-[12vw]
-              lg:h-[10vh] lg:w-[10vw] "
+              lg:h-[10vh] lg:w-[10vw]
+              xl:h-[10vh] xl:w-[12vw] "
             >
               <RiSearchLine />
             </button>
           </div>
 
           <div
-            className="weathDetail flex items-center gap-2 pt-10 
+            className="weathDetail flex flex-col-reverse justify-center  gap-2  items-center
           sm:h-[37vh] sm:[40vw] sm:flex sm:flex-col-reverse  sm:items-center sm:pt-8  
           md:h-[27vh] md:[42vw] md:flex  md:flex-row md:items-center md:p-10 
           lg:h-[30vh] lg:[54vw] lg:flex lg:items-center lg:p-10  "
           >
-            <div className="weatHead flex flex-col gap-5  p-1">
+            <div className="weatHead flex flex-col content-center gap-5  p-1">
               <h1
                 className="text-6xl  text-amber-50
-              sm:text-[4rem] md:text-[5rem] lg:text-[6rem] xl:text-[4rem]"
+              sm:text-[4rem] md:text-[5rem] lg:text-[4rem] xl:text-[4rem]"
               >
                 {temp}
               </h1>
               <h2
                 className="text-4xl  text-amber-50
-              sm:text-[3rem] md:text-[4rem] lg:text-[4rem] xl:text-[3rem]"
+              sm:text-[3rem] md:text-[4rem] lg:text-[3.2rem] xl:text-[3rem]"
               >
                 {loc}
               </h2>
             </div>
             <div
-              className="images h-[26vh] w-[50vw]  object-contain 
+              className="images h-[20vh] w-[40vw]  object-contain  flex
+              items-center 
             "
             >
               {isOn && (
                 <img
                   src={`./src/assets/${isOn}.png`}
-                  className="h-[26vh] w-[17vw]  
-                    sm:h-[27vh] sm:w-[60vw]  
-                    md:h-[26vh] md:w-[39vw] 
+                  className="h-[26vh] w-[40vw] mt-5  
+                    sm:h-[20vh] sm:w-[56vw]   
+                    md:h-[26vh] md:w-[33vw] 
                     lg:h-[30vh] lg:w-[40vw]
                     xl:h-[30vh] xl:w-[20vw]"
                 />
@@ -137,7 +139,7 @@ function App() {
             </div>
           </div>
           {cond ? (
-            <div className="cardDiv flex block gap-6 pt-7">
+            <div className="cardDiv flex  block gap-6 pt-7">
               <Cards value={humd} icon={humidity} />
               <Cards value={windM} icon={wind} />
             </div>

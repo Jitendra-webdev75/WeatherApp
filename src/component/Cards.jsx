@@ -2,15 +2,15 @@ function Cards({ value, icon, labelVal }) {
   return (
     <>
       <div
-        className="card h-[13vh] w-[13vw] flex items-center  justify-around bg-gradient-to-r from-blue-400  to-blue-600 gap-2 
+        className="card h-[14vh] w-[26vw] flex flex-col items-center  justify-around p-2 bg-gradient-to-r from-blue-400  to-blue-600 
         shadow-md shadow-amber-100 rounded-xl 
         hover::bg-gradient-to-r hover:from-red-400  hover:to-blue-600
-        sm:h-[10vh] sm:w-[30vw] sm:mt-2
-        md:h-[10vh] md:[14vw]
-        lg:h-[10vh] lg:[14vw] lg:mt-4
-        xl:h-[10vh] xl:[14vw] xl:mt-7"
+        sm:h-[10vh] sm:w-[30vw] sm:flex sm:flex-row
+        md:h-[10vh] md:[14vw] md:flex
+        lg:h-[10vh] lg:[14vw] lg:flex
+        xl:h-[10vh] xl:[14vw] xl:flex"
       >
-        <div className="img h-12 w-12">
+        <div className="img h-12 w-12 ">
           <img src={icon} />
         </div>
         <h1
