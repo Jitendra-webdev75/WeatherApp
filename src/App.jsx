@@ -20,17 +20,30 @@ function App() {
     }
     const apiKey = "c87452cfea264e3c9f4161806261703";
     const url = `https://api.weatherapi.com/v1/current.json?key=${apiKey}&q=${value}`;
-    const response = await fetch(url);
-    const result = await response.json();
-    let code = result.current.condition.code;
-    console.log(result);
-    setTemp(`${result.current.temp_c}°C`);
-    setLoc(`${result.location.name}`);
-    setHumd(`${result.current.humidity}`);
-    setWindM(`${result.current.wind_kph}Kph`);
-    setCond(true);
-    inputHandl();
-    imgHandler(code);
+
+    try {
+      const response = await fetch(url);
+
+      if (!response.ok) {
+        alert("You Enter wrong city name try again!");
+        setValue("");
+        return;
+      }
+
+      const result = await response.json();
+      let code = result.current.condition.code;
+      console.log(result);
+      setTemp(`${result.current.temp_c}°C`);
+      setLoc(`${result.location.name}`);
+      setHumd(`${result.current.humidity}`);
+      setWindM(`${result.current.wind_kph}Kph`);
+      setCond(true);
+      inputHandl();
+      imgHandler(code);
+    } catch (error) {
+      console.error("Error fecthing data", error);
+      alert("Network error check your internet");
+    }
   };
 
   const inputHandl = () => {
