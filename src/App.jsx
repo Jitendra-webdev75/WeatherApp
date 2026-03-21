@@ -1,7 +1,7 @@
 import { useState } from "react";
 import Cards from "./component/Cards.jsx";
-import humidity from "../src/assets/humidity.png";
-import wind from "../src/assets/wind.png";
+import humidity from "/humidity.png";
+import wind from "/wind.png";
 import { RiSearchLine } from "@remixicon/react";
 
 function App() {
@@ -29,8 +29,12 @@ function App() {
     setHumd(`${result.current.humidity}`);
     setWindM(`${result.current.wind_kph}Kph`);
     setCond(true);
-
+    inputHandl();
     imgHandler(code);
+  };
+
+  const inputHandl = () => {
+    setValue("");
   };
 
   const imgHandler = (code) => {
@@ -70,6 +74,7 @@ function App() {
         >
           <div className="searchBar  flex justify-center ">
             <input
+              value={value}
               onChange={(e) => {
                 if (e.target.value == "delhi") {
                   setValue(`${e.target.value},in`);
@@ -132,7 +137,7 @@ function App() {
             >
               {isOn && (
                 <img
-                  src={`./src/assets/${isOn}.png`}
+                  src={`/${isOn}.png`}
                   className="h-[18vh] w-[40vw] mt-5   
                     sm:h-[20vh] sm:w-[56vw]   
                     md:h-[26vh] md:w-[33vw] 
