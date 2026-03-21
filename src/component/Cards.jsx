@@ -3,7 +3,7 @@ function Cards({ value, icon, labelVal }) {
     <>
       <div
         className="card h-[14vh] w-[26vw] flex flex-col items-center  justify-around p-2 bg-gradient-to-r from-blue-400  to-blue-600 
-        shadow-md shadow-amber-100 rounded-xl 
+        shadow-lg shadow-blue-400 rounded-xl select-none 
         hover::bg-gradient-to-r hover:from-red-400  hover:to-blue-600
         sm:h-[10vh] sm:w-[30vw] sm:flex sm:flex-row
         md:h-[10vh] md:[14vw] md:flex
@@ -14,7 +14,7 @@ function Cards({ value, icon, labelVal }) {
           <img src={icon} />
         </div>
         <h1
-          className="text-2xl text-white 
+          className="text-xl text-white 
           sm:text-[2.2rem]
           md:text-[3rem]
           lg:text-[2.5rem]
